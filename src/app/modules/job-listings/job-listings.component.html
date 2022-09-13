@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-table #table [dataSource]="datasource">
+      <ng-container matColumnDef="logo">
+        <mat-header-cell *matHeaderCellDef>Logo</mat-header-cell>
+        <mat-cell *matCellDef="let element"><img [src]="element.logo" /></mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.company}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let element"><mat-chip>{{element.role}}</mat-chip></mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="level">
+        <mat-header-cell *matHeaderCellDef>Level</mat-header-cell>
+        <mat-cell *matCellDef="let element"><mat-chip>{{element.level}}</mat-chip></mat-cell>
+      </ng-container>    
+  
+      <mat-header-row *matHeaderRowDef="availableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: availableColumns;"></mat-row>
+    </mat-table>
+  </mat-card>
