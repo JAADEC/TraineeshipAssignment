@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css?family=League+Spartan');
+
+// // Define the dark theme.
+// $primary: mat.define-palette(mat., 900);
+// $accent: mat.define-palette(mat.$green-palette);
+// $warn: mat.define-palette(mat.$deep-orange-palette);
+// $theme: mat.define-dark-theme($primary, $accent);
+
+html, body { height: 100%;}
+body { 
+    margin: 0;
+    font-size: 20px;
+    font-family: "League Spartan", "Helvetica Neue", sans-serif;
+    color: hsl(180, 29%, 50%);
+    background-color: hsl(180, 52%, 96%);
+}
+
+// Avoid any overflow sideways
+.mat-drawer-content {
+    overflow-x: hidden !important;
+}
+
+.mat-chip {
+    background-color: hsl(180, 31%, 95%);
+}

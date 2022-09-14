@@ -1,0 +1,51 @@
+.mat-card {
+    width: 80%;
+    margin-bottom: 15px;
+    background-color: hsl(0, 0%, 100%);
+}
+
+/* .mat-table {
+    border-collapse: separate!important;
+    border-spacing:0 4px!important;
+} */
+
+.filter-attributes {
+    cursor: pointer;
+}
+
+.filter-attributes:hover {
+    background-color: hsl(180, 29%, 50%);
+    color: whitesmoke;
+}
+
+.filter-box {
+    background-color: white;
+}
+
+.new {
+    background-color: hsl(180, 29%, 50%);
+    color: whitesmoke;
+}
+
+.featured {
+    background-color: hsl(180, 14%, 20%);
+    color: whitesmoke;
+}
+
+.position {
+    cursor: pointer;
+    color: hsl(180, 14%, 20%);
+    font-weight:900;
+}
+
+.position:hover {
+    color:hsl(180, 29%, 50%);
+}
+
+.extra-info {
+    color: hsl(180, 8%, 52%)
+}
+
+/* .filter-attributes {
+    margin-right: 1%;
+} */
