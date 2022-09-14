@@ -12,6 +12,7 @@ export class JobService {
     private http: HttpClient,
   ) { }
 
+  // Gets jobs from the data file
   getJobs(): Observable<Array<IJob>> {
     return this.http.get<Array<IJob>>('assets/data.json')
   }

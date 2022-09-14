@@ -1,17 +1,19 @@
 <div *ngIf="datasource" fxLayoutAlign="begin center" fxLayout="column">
-  <mat-card class="filter-box" fxFlex="100%">
-      <mat-form-field class="filter">
-        <mat-chip-list #chipList>
-          <div fxLayout="row">
+  <mat-card *ngIf="!isFilterEmpty()" class="filter-box" fxLayoutAlign="begin center" 
+    ngStyle.gt-sm="width: 80%" ngStyle.lt-md="width: 100%">
+      <mat-form-field class="filter" fxFlex="90%">
+        <mat-chip-list #filterList>
+          <div fxLayout="row" fxFlex>
             <mat-chip *ngFor="let filter of filters" class="filter-attributes" [selectable]="selectable"
                     [removable]="removable" (removed)="remove(filter)">
               {{filter}}
               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
-            <input [matChipInputFor]="chipList"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="addOnBlur"
-                  (matChipInputTokenEnd)="add($event)">
+            <input
+              [matChipInputFor]="filterList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
           </div>
         </mat-chip-list>
       </mat-form-field>
@@ -22,18 +24,32 @@
 
   <div fxLayout="column" style="width: 100%">
     <div *ngFor="let job of datasource" fxLayoutAlign="center center" style="width: 100%">
-      <mat-card *ngIf="isFilter(job)" class="job" fxLayout="row">
-        <img [src]="importLogo(job.logo)"/>
+      <mat-card *ngIf="isFilter(job)" class="job" fxLayout="row" 
+        ngStyle.gt-sm="width:80%" ngStyle.lt-md="width: 100%">
+
+        <img fxHide.lt-md [src]="importLogo(job.logo)"/>
+        
         <div fxLayout="column" style="margin-left:16px">
           <span fxLayout="row" fxLayoutAlign="begin center">
-            {{job.company}} <mat-chip-list style="margin-left:16px"><mat-chip class="new" *ngIf="job.new">NEW!</mat-chip> <mat-chip class="featured" *ngIf="job.featured">FEATURED</mat-chip></mat-chip-list>
+            {{job.company}} 
+            <mat-chip-list style="margin-left:16px" class="promo">
+              <mat-chip class="new" *ngIf="job.new" fxHide.lt-md>NEW!</mat-chip> 
+              <mat-chip class="featured" *ngIf="job.featured" fxHide.lt-md>FEATURED</mat-chip>
+              <mat-chip class="new" *ngIf="job.new" fxHide.gt-sm>N</mat-chip> 
+              <mat-chip class="featured" *ngIf="job.featured" fxHide.gt-sm>FT</mat-chip>
+            </mat-chip-list>
           </span>
           <div class="position" style="margin-top:8px">{{job.position}}</div>
-          <span>
+          <div fxHide.gt-sm class="extra-info">
+            {{job.postedAt}} <br>
+            {{job.contract}} <br>
+            {{job.location}} <br>
+          </div>
+          <span fxHide.lt-md >
             <div class="extra-info" style="margin-top:8px">{{job.postedAt}} · {{job.contract}} · {{job.location}}</div>
           </span>
         </div>
-        <div fxFlex fxLayout fxLayoutAlign="end center">
+        <div fxFlex fxLayout fxLayoutAlign="end center" ngStyle.lt-md="margin-left: 5px">
           <mat-chip-list>
             <mat-chip class="filter-attributes" *ngFor="let filter of getFilterAttributes(job)" (click)="addFilterAttr(filter)">{{filter}}</mat-chip>
           </mat-chip-list>
@@ -41,40 +57,4 @@
       </mat-card>
     </div>
   </div>
-  <!-- <mat-card>
-    <mat-table #table [dataSource]="datasource">
-      <ng-container matColumnDef="logo">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"><img [src]="importLogo(element.logo)" /></mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="company">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <div fxLayout="column">
-            <span>
-              {{element.company}} <mat-chip-list><mat-chip class="new" *ngIf="element.new">NEW!</mat-chip> <mat-chip class="featured" *ngIf="element.featured">FEATURED</mat-chip></mat-chip-list>
-            </span>
-            <div class="position">{{element.position}}</div>
-            <span>
-              <div class="extra-info">{{element.postedAt}} {{element.contract}} {{element.location}}</div>
-            </span>
-          </div>
-          
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="filters">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-chip-list>
-            <mat-chip class="filter-attributes" *ngFor="let filter of getFilterValues(element)" style="cursor: pointer">{{filter}}</mat-chip>
-          </mat-chip-list>
-        </mat-cell>
-      </ng-container> 
-
-      <mat-header-row *matHeaderRowDef="availableColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: availableColumns;"></mat-row>
-    </mat-table>
-  </mat-card> -->
 </div>

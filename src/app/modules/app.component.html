@@ -2,7 +2,10 @@
   <div fxFlex="100%" class="flex-wrapper">
     <div class="header">
       <!-- todo: use desktop and mobile header -->
-      <img src="assets/images/bg-header-desktop.svg" fxFlex>
+      <img 
+        src.gt-sm="assets/images/bg-header-desktop.svg" 
+        src.lt-md="assets/images/bg-header-mobile.svg"
+      fxFlex>
     </div>
     <app-job-listings></app-job-listings>
   </div>

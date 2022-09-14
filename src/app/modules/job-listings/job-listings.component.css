@@ -1,15 +1,16 @@
 .mat-card {
-    width: 80%;
     margin-bottom: 15px;
     background-color: hsl(0, 0%, 100%);
 }
 
-/* .mat-table {
-    border-collapse: separate!important;
-    border-spacing:0 4px!important;
-} */
+.mat-form-field {
+    display: flex;
+    flex-direction: row;
+    overflow:hidden;
+}
 
 .filter-attributes {
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -22,20 +23,30 @@
     background-color: white;
 }
 
+.job:hover {
+    border-left: hsl(180, 29%, 50%) 5px solid;
+}
+
 .new {
     background-color: hsl(180, 29%, 50%);
     color: whitesmoke;
+    font-size: 15px;
 }
 
 .featured {
     background-color: hsl(180, 14%, 20%);
     color: whitesmoke;
+    font-size: 15px;
+}
+
+.company {
+    font-weight: 500;
 }
 
 .position {
     cursor: pointer;
     color: hsl(180, 14%, 20%);
-    font-weight:900;
+    font-weight: 700;
 }
 
 .position:hover {
@@ -45,7 +56,3 @@
 .extra-info {
     color: hsl(180, 8%, 52%)
 }
-
-/* .filter-attributes {
-    margin-right: 1%;
-} */

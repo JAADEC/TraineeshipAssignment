@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import { IJob } from '../models/job.model';
-import { JobService } from '../services/job.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +7,7 @@ import { JobService } from '../services/job.service';
 })
 export class AppComponent implements OnInit {
   
-  
+  // Only used to present the header of the webpage
   ngOnInit(): void {
   }
 }
